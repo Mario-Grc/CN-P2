@@ -4,6 +4,8 @@ Este proyecto despliega una tubería de datos completa en AWS para ingerir, proc
 
 ## Arquitectura
 
+![Diagrama](Diagrama.png)
+
 1.  **Ingesta**: Script `kinesis.py` envía datos desde un CSV a un **Kinesis Data Stream**.
 2.  **Transformación**: **Kinesis Firehose** con una **Lambda** de transformación almacena los datos en **S3** (zona `raw`).
 3.  **Procesamiento ETL**: **AWS Glue** rastrea los datos (`Crawler`) y ejecuta trabajos (`Jobs`) para agregar la información:
