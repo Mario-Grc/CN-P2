@@ -15,6 +15,7 @@ Este proyecto despliega una tubería de datos completa en AWS para ingerir, proc
 
 *   **Linux/MacOS** (o WSL en Windows).
 *   **AWS CLI v2** instalado y configurado con tus credenciales (`aws configure`).
+*   **Rol IAM `LabRole`**: El script asume la existencia de un rol llamado `LabRole` (común en entornos AWS Academy). Si usas una cuenta personal, asegúrate de crear este rol o modificar el script.
 *   **uv** instalado (Gestor de paquetes de Python).
     *   Instalar: `curl -LsSf https://astral.sh/uv/install.sh | sh`
 
@@ -35,8 +36,12 @@ El script principal `script.sh` automatiza todo el proceso: crea recursos, sube 
 # Dar permisos de ejecución
 chmod +x script.sh
 
-# Ejecutar con uv para asegurar el entorno Python correcto
+# Opción 1: Usando uv (Más directo)
 uv run script.sh
+
+# Opción 2: Método tradicional (source)
+source .venv/bin/activate
+./script.sh
 ```
 
 El script tomará unos minutos. Verás logs de progreso en la consola. Al finalizar, mostrará un resumen de los recursos creados.
@@ -49,8 +54,12 @@ Para eliminar **todos** los recursos creados en AWS y evitar costes:
 # Dar permisos
 chmod +x cleanup.sh
 
-# Ejecutar limpieza
+# Opción 1: Usando uv
 uv run cleanup.sh
+
+# Opción 2: Método tradicional
+source .venv/bin/activate
+./cleanup.sh
 ```
 
 > [!WARNING]
